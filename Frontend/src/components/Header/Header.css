@@ -1,9 +1,10 @@
 .header {
     height: 34vw;
     margin: 30px auto;
-    background: url("/src/assets/frontend_assets/header_img.png") no-repeat ;
+    background: url("/src/assets/frontend_assets/header_img.jpg") no-repeat  ;
     background-size: contain;
     position: relative;
+    border-radius: 20px;
 }
 
 .header-contents {
@@ -17,7 +18,10 @@
     left: 6vw;
     animation: fadeIn 3s;
 }
-
+.header-contents a button:hover{
+    color: white;
+    background-color: tomato;
+}
 .header-contents h2 {
     color: white;
     font-size: max(4.5vw, 22px);
