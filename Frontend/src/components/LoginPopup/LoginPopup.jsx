@@ -5,6 +5,7 @@ import { BASE_URL } from '../../../Utils/constant'
 import axios from'axios'
 import { useContext } from 'react'
 import { StoreContext } from '../../Context/StoreContext'
+import {toast} from 'react-toastify'
 const LoginPopup = ({ setShowLogin }) => {
     const [currentState, setCurrentState] = useState("Login")
     const {setToken}=useContext(StoreContext);
@@ -38,7 +39,7 @@ const LoginPopup = ({ setShowLogin }) => {
             console.log(token);
         }
         else{
-            alert(response.data.message);
+       toast.error(response.data.message)
         }
     }
     return (
