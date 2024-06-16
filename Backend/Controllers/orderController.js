@@ -77,7 +77,6 @@ const userOrders = async (req, res) => {
             console.log("error");
             res.json({ success: false, message: "Nothing" });
         }
-        console.log(orders);
 
     } catch (error) {
         console.log(error)

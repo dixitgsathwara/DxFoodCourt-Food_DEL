@@ -36,7 +36,6 @@ const LoginPopup = ({ setShowLogin }) => {
             setToken(response.data.accesstoken);
             localStorage.setItem("token",response.data.accesstoken);
             setShowLogin(false);
-            console.log(token);
         }
         else{
        toast.error(response.data.message)

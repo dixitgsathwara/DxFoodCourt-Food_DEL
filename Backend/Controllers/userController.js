@@ -60,4 +60,7 @@ const userRegister = async (req, res) => {
         res.json({ success: false, message: "Error" });
     }
 }
-export { userLogin, userRegister }
+const getInfo= async(req,res)=>{
+    res.json({ success: true});
+}
+export { userLogin, userRegister ,getInfo}
