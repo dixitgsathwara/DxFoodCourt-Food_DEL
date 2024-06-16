@@ -2,6 +2,10 @@
 
 DxFoodCourt is a food delivery web-application built using the MERN stack (MongoDB, Express, React, Node.js). This web application allows users to register or login to order food and integrates Stripe for secure payment processing. user have additional privileges to  view past orders and current order statuses.
 
+## Deployment
+
+This website is deployed on vercel... [CLICK HERE TO VIEW](https://dxfoodcourt.vercel.app/)
+
 ## Video Demo
 
 [Watch the video](https://www.loom.com/share/0139e858864549bc8893a9e51bb5b8fb?sid=7e3686d6-7ff6-4d53-b688-885a22eb7d8b)
