@@ -4,7 +4,9 @@ DxFoodCourt is a food delivery web-application built using the MERN stack (Mongo
 
 ## Deployment
 
-This website is deployed on vercel... [CLICK HERE TO VIEW](https://dxfoodcourt.vercel.app/)
+This website is deployed on netlify... 
+[CLICK HERE TO VIEW](https://dxfoodcourt.netlify.app)
+
 
 ## Video Demo
 
