@@ -74,3 +74,7 @@
     cursor: pointer;
     text-decoration: underline;
 }
+.login-popup-inputs p{
+    cursor: pointer;
+    color: #0b57d0;
+}

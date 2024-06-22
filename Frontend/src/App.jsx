@@ -11,6 +11,7 @@ import Verify from './Pages/Verify/Verify'
 import MyOrders from './Pages/MyOrders/MyOrders'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Forgot from './Pages/Forgot/Forgot'
 function App() {
  const [showLogin,setShowLogin]=useState(false)
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/order' element={<PlaceOrder/>}/>
         <Route path='/verify' element={<Verify/>}/>
         <Route path='/myorders' element={<MyOrders/>}/>
+        <Route path='/forgot' element={<Forgot/>}/>
       </Routes>
       </div>
       <Footer/>

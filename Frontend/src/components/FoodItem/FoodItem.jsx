@@ -25,8 +25,8 @@ const FoodItem = ({ id, name, price, description, image }) => {
                     <p>{name}</p>
                     <img src={assets.rating_starts} alt="" />
                 </div>
-                <p className="food-item-desc">{description}</p>
-                <p className="food-item-price">₹{price}</p>
+                <div className="food-item-desc">{description}</div>
+                <div className="food-item-price">₹{price}</div>
             </div>
         </div>
     )

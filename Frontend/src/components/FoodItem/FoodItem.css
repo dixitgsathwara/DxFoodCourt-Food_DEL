@@ -14,6 +14,7 @@
 
 .food-item-info {
     padding: 20px;
+    height: 200px;
 }
 
 .food-item-name-rating {
@@ -35,6 +36,11 @@
 .food-item-desc {
     color: #676767;
     font-size: 12px;
+    overflow: scroll;
+    height: 60px;
+}
+.food-item-desc::-webkit-scrollbar{
+    display: none;
 }
 
 .food-item-price {
