@@ -116,4 +116,40 @@ const updatePassword = async (req, res) => {
         res.json({ success: false, message: "Error" });
     }
 }
-export { userLogin, userRegister, getInfo, forgotPassword, updatePassword }
+
+const googleLogin = async (req, res) => {
+    const { name, email } = req.body;
+    try {
+        const exists = await userModel.findOne({ email });
+        if (exists) {
+            const id = exists._id;
+            const accesstoken = jwt.sign(
+                { id },
+                process.env.ACCESS_TOKEN_SECRET,
+                { expiresIn: "30m" }
+            );
+            res.json({ success: true, accesstoken });
+        }
+        else {
+            const hashPassword = await bcrypt.hash("123456789", 10);
+            const newUser = new userModel({
+                name: name,
+                email: email,
+                password: hashPassword,
+            });
+            const user = await newUser.save();
+            const id = user._id;
+            const accesstoken = jwt.sign(
+                { id },
+                process.env.ACCESS_TOKEN_SECRET,
+                { expiresIn: "30m" }
+            );
+            res.json({ success: true, accesstoken });
+        }
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: "Error" });
+    }
+
+}
+export { userLogin, userRegister, getInfo, forgotPassword, updatePassword, googleLogin }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './LoginPopup.css'
 import { assets } from '../../assets/frontend_assets/assets'
 import { BASE_URL } from '../../../Utils/constant'
@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { StoreContext } from '../../Context/StoreContext'
 import { toast } from 'react-toastify'
-
+import { jwtDecode } from 'jwt-decode'
 
 const LoginPopup = ({ setShowLogin }) => {
     const [currentState, setCurrentState] = useState("Login")
@@ -58,7 +58,33 @@ const LoginPopup = ({ setShowLogin }) => {
             })
         }
     }
-
+    const handleCallbackResponse = async (res) => {
+        const user = jwtDecode(res.credential);
+        console.log(user);
+        const userData = {
+            name: user.name,
+            email: user.email
+        }
+        const response = await axios.post(BASE_URL + "/api/user/googlelogin", userData);
+        if (response.data.success) {
+            setToken(response.data.accesstoken);
+            localStorage.setItem("token", response.data.accesstoken);
+            setShowLogin(false);
+        }
+        else {
+            toast.error(response.data.message)
+        }
+    }
+    useEffect(() => {
+        google.accounts.id.initialize({
+            client_id: "163521476600-7fcgshvqn9pch9i7i4o95p5b655dot77.apps.googleusercontent.com",
+            callback: handleCallbackResponse
+        })
+        google.accounts.id.renderButton(
+            document.getElementById("signInDiv"),
+            { theme: "outline", size: "large" }
+        )
+    }, [])
     return (
         <div className="login-popup">
             {forgot
@@ -96,7 +122,7 @@ const LoginPopup = ({ setShowLogin }) => {
                         ? <p>Create New Account? <span onClick={() => setCurrentState("Sign Up")}>Click Here</span></p>
                         : <p>Already Have an Account? <span onClick={() => setCurrentState("Login")}>Login Here</span></p>
                     }
-
+                    <div id="signInDiv"></div>
                 </form>
             }
         </div>
