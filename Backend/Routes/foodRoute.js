@@ -15,4 +15,3 @@ foodRouter.route('/list').get(listFood);
 foodRouter.route('/remove').post(removeFood);
 
 export default foodRouter;
-

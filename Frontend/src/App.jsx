@@ -12,6 +12,7 @@ import MyOrders from './Pages/MyOrders/MyOrders'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Forgot from './Pages/Forgot/Forgot'
+import Sidebar from './Pages/Sidebar/Sidebar'
 function App() {
  const [showLogin,setShowLogin]=useState(false)
   return (

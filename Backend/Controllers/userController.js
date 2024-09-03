@@ -20,7 +20,7 @@ const userLogin = async (req, res) => {
             res.json({ success: true, accesstoken });
         }
         else {
-            return res.json({ success: false, message: "Passwors Does Not Match" });
+            return res.json({ success: false, message: "Passwords Does Not Match" });
 
         }
     } catch (error) {
@@ -87,8 +87,19 @@ const forgotPassword = async (req, res) => {
             const mailOptions = {
                 from: process.env.EMAIL_USER,
                 to: email,
-                subject: 'Update Password',
-                text: `Hello ${exists.name},\n\n ${url},\n\n This is the url..for update password click the url and update your password`
+                subject: 'Reset your dxfoodcourt account Password',
+                html: `
+                    <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                        <h2>Hello ${exists.name},</h2>
+                        <p>We received a request to reset the password for your dxfoodcourt account.</p>
+                        <p>To update your password, click the button below:</p>
+                        <p>
+                            <a href="${url}" style="background-color: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Reset Password</a>
+                        </p>
+                        <p>If you did not request a password reset, please ignore this email.</p>
+                        <p>Thanks,<br>The dxfoodcourt Team</p>
+                    </div>
+                `
             };
 
             transporter.sendMail(mailOptions, (error, info) => {
