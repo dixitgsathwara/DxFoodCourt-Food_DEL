@@ -8,9 +8,12 @@ const StoreContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({});
     const [token, setToken] = useState("");
     const [food_list, setFoodList] = useState([]);
+    const [loading, setLoading] = useState(true);
     const fetchFoodList = async () => {
+        setLoading(true);
         const response = await axios.get(`${BASE_URL}/api/food/list`);
         setFoodList(response.data.data);
+        setLoading(false);
     }
     const addToCart = async (itemId) => {
         if (!cartItems[itemId]) {
@@ -76,7 +79,8 @@ const StoreContextProvider = (props) => {
         addToCart,
         removeFromCart,
         token,
-        setToken
+        setToken,
+        loading
     }
     return (
         <StoreContext.Provider value={ContextValue}>

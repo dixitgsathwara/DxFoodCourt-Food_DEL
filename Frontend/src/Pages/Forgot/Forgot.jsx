@@ -47,7 +47,7 @@ const Forgot = () => {
         <div className='container'>
             <form onSubmit={updatePassword} className="login-popup-container">
                 <div className="login-popup-title">
-                    <h2>Forgot Password</h2>
+                    <h2>Reset your password</h2>
                 </div>
                 <div className="login-popup-inputs">
                     <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Enter your password' required />
